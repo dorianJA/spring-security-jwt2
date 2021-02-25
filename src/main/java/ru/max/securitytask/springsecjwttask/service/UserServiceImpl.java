@@ -71,7 +71,6 @@ public class UserServiceImpl implements UserService {
             payObj.setAmount(payment);
             payObj.setUser(user);
             payObj.setOperationDate(LocalDateTime.now());
-            System.out.println(LocalDateTime.now());
             paymentRepository.save(payObj);
         }else {
             throw new NoMoneyForPaymentException("Not enough cash to pay");
