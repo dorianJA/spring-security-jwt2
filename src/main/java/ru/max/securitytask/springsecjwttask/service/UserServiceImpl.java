@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(isolation = Isolation.REPEATABLE_READ)
     public void pay(String login, Double payment) {
         UserEntity user = userRepository.findByLogin(login);
-        if (user!=null && user.getBalance().compareTo(payment) > 0){
+        if (user!=null && user.getBalance().compareTo(payment) >= 0){
             user.setBalance(user.getBalance()-payment);
             userRepository.save(user);
             Payment payObj = new Payment();
